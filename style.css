@@ -25,7 +25,7 @@ h3 {
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(4, 25vmin);
-    grid-template-rows: repeat(4, 17vmin);
+    grid-template-rows: repeat(4, 20vmin);
     justify-content: center;
 }
 .flip-card {
@@ -74,8 +74,8 @@ h3 {
 
 img {
     position: absolute;
-    width: 300px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     display: grid;
 }
 
