@@ -1,33 +1,51 @@
  body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 header {
     text-align: center;
-    font-size: 8vmin;
+    font-size: 7vmin;
 }
+
 h1 {
     color: darkgreen;
     text-align: right;
     margin-top: -3vmin;
     margin-top: -4vmin;
 }
+
 h2 {
     text-align: center;
     font-size: 3vmin;
 }
+
 h3 {
     text-align: center;
     font-size: 3vmin;
 }
+
 #board {
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(4, 25vmin);
+    grid-template-columns: repeat(4, 20vmin);
     grid-template-rows: repeat(4, 20vmin);
     justify-content: center;
+    gap: 1.5vmin;
 }
+
+button{
+margin-top: 4vmin;
+padding: 2vmin;
+font-size: 2vmin;
+border-radius: 9vmin;
+border: 1vmin ridge rgba(214, 49, 3, 0.901);
+color: black;
+}
+
 .flip-card {
   background-color: transparent;
   width: 100%;
@@ -45,7 +63,9 @@ h3 {
 }
 
 .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
+    transform: scale(.90);
+    transition: transform 150ms ease-in;
 }
 
 .flip-card-front, .flip-card-back {
@@ -53,7 +73,6 @@ h3 {
     height: 100%;
     width: 100%;
     position: absolute;
-    backface-visibility: hidden;
 }
 
 .flip-card-front {
@@ -61,6 +80,11 @@ h3 {
     width: 100%;
     height: 100%;
     display: grid;
+    transform: rotateY(180deg);
+    border: .7vmin;
+    border-style:ridge;
+    border-color: darkgray;
+    border-radius: 10%;
 }
 
 .flip-card-back {
@@ -70,14 +94,15 @@ h3 {
     width: 100%;
     height: 100%;
     border: 0.5vmin;
+    backface-visibility: hidden;
 }
 
 img {
     position: absolute;
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: 100%;
     display: grid;
+    border-radius: 10%;
 }
 
-
-
+     
