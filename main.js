@@ -5,31 +5,14 @@ const cards = document.querySelectorAll('.flip-card')
 /*----- state variables -----*/
 //number of matches
 let livesRemaining = 5;
-// let cardClickOne = 1;
-// let cardClickTwo = -1;
- let chosen = [];
+let chosen = [];
 let winner = false;
-// let timer;
-let matches = 0;
+let matched = 0;
 let flip = 0;
 
 /*----- event listeners -----*/
-//a click on any of the cards
+//a click on any of the cards will result in it flipping
 board.addEventListener('click', flipCard);
-
-function flipCard(evt) {
-    const cardContainer = evt.target.closest('.flip-card-inner');
-    if (cardContainer && !cardContainer.classList.contains('flipped') && chosen.length < 2) {
-        cardContainer.style.transform = 'rotateY(180deg)';
-        cardContainer.classList.add('flipped');
-        chosen.push(cardContainer.dataset.id);
-        flip++;
-        if (chosen.length === 2) {
-          setTimeout(checkMatch, 1000);
-        }
-    }
-
-}
 
 
 
@@ -39,29 +22,62 @@ function flipCard(evt) {
 
 //an incompatible pair has been clicked
 
-
 /*----- functions -----*/
-// initialize(); //this sets up the game when it loads in the browser
+//this sets up the game when it loads in the browser
+function initialize(){
 
-// function initailize() {
-//     winner = null;
-//     board = [
-//         [0, 0, 0, 0], // col 0
-//         [0, 0, 0, 0], // col 1
-//         [0, 0, 0, 0], // col 2
-//         [0, 0, 0, 0], // col 3
-//         [0, 0, 0, 0]  // col 4
-//      //  r0 r1 r2 r3   
-//     ];
-//     render();    
-// }
+} 
+
+function flipCard(evt) {
+    
+    const cardContainer = evt.target.closest('.flip-card-inner');
+    // if the container was found and the card hasn't been flipped yet and less than two cards are chosen
+    if (cardContainer && !cardContainer.classList.contains('flipped') && chosen.length < 2) {
+         // flip the card by rotating it 180 degrees
+        cardContainer.style.transform = 'rotateY(180deg)';
+        // then mark the card as flipped
+        cardContainer.classList.add('flipped');
+        // add the card's id to the list of chosen cards
+        chosen.push(cardContainer.dataset.id);
+        // increase the flip count by one
+        flip++;
+
+        // If two cards have been chosen, wait for a short delay and check if they match
+        if (chosen.length === 2) {
+          setTimeout(checkMatch, 1000);
+        }
+    }
+
+}
+
+//fuction to check if a match is found
+function checkMatch() {
+  const cards =  document.querySelectorAll('.flip-card-inner.flipped');
+  // get the first and second flipped card
+  const firstCard = cards[0];
+  const secondCard = cards[1];
+
+  // If the data-framework of both cards are the same, add the 'matched' class and increment the matched counter
+  if (firstCard.dataset.framework === secondCard.dataset.framework) {
+    firstCard.classList.add('matched');
+    secondCard.classList.add('matched');
+    matched++; // increase the matched counter
+  } 
+  // else, remove the 'flipped' class from both cards, meaning they will flip back to their original state
+  else {
+    firstCard.classList.remove('flipped');
+    secondCard.classList.remove('flipped');
+  }
+
+  // Empty the chosen array so the player can choose new cards to flip
+  chosen = [];
+}
 
 
 
-//The browser will initailize and begin a game state automatically
 
-// I will need 16 cards to be showing face down when the game begins
 
-// they will all need to be clickable
 
-// the user will be able to select no more than two cards at a time
+
+
+
