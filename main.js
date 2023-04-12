@@ -1,26 +1,37 @@
 /*----- constants -----*/
-//placement of cards
 const board = document.querySelector('#board');
 const cards = document.querySelectorAll('.flip-card')
+const displayMessage = document.querySelector('#message')
+const playAgainBtn = document.querySelector('button');
 /*----- state variables -----*/
-//number of matches
 let chosen = []; 
 let matched = 0;
 let flip = 0;
-let won;
 let lost;
 let turns;
-
+let livesRemaining = 5;
+let message;
+// let winner = false;
 /*----- event listeners -----*/
 //a click on any of the cards will result in it flipping
 board.addEventListener('click', flipCard);
-
+playAgainBtn.addEventListener('click', function() {
+    window.location.reload()
+});
 /*----- functions -----*/
 //this sets up the game when it loads in the browser
+initialize();
+
 function initialize(){
-    let livesRemaining = 5;
-    let winner = false;
+  livesRemaining = 5;
+  firstCard = null;
+  secondCard = null;  
 } 
+
+// function render() {
+//     //render win/loss message
+//     renderMessage();
+// }
 
  //calling the funciton when a card is clicked
  function flipCard(evt) {
@@ -49,18 +60,18 @@ function initialize(){
 //function to check if a match is found
  function checkMatch() {
   const cards =  document.querySelectorAll('.flip-card-inner');
-  console.log(chosen)
+//   console.log(chosen)
   // get the first and second flipped card
   const firstCard = chosen[0];
   const secondCard = chosen[1];
-  console.log(firstCard.getAttribute('id'))
+//   console.log(firstCard.getAttribute('id'))
 
   //If the id of both cards are the same, add the 'matched' class and increment the matched counter
   if (firstCard.getAttribute('id') === secondCard.getAttribute('id')) {
     firstCard.classList.add('matched');
     secondCard.classList.add('matched');
     matched++; // increase the matched counter
-    console.log('match')
+    // console.log('match')
   } 
   // else, remove the 'flipped' class from both cards, meaning they will flip back to their original state
   else {
@@ -69,14 +80,26 @@ function initialize(){
     secondCard.classList.remove('flipped');
     firstCard.style.transform = 'rotateY(0deg)';
     secondCard.style.transform = 'rotateY(0deg)';
-    console.log('notmatch')
+    livesRemaining--;
+    console.log(livesRemaining)
   }
+  if (livesRemaining === 0) {
+    displayMessage.textContent = "Your luck has run out! Try again!"
+  }
+    // console.log('0 lives')
 
   // Empty the chosen array so the player can choose new cards to flip
   chosen = [];
 }
 
-console.log(checkMatch)
+
+// function renderMessage() {
+//  //check if 
+//    let allMatchesFound; 
+
+   
+//    if (won === )
+// }
 
 
 

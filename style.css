@@ -4,29 +4,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: radial-gradient(rgba(233, 228, 70, 0.77), rgba(69, 145, 31, 0.907));
 }
 
 header {
     text-align: center;
-    font-size: 4vmin;
+    font-size: 5vmin;
 }
 
-h1 {
-    color: darkgreen;
+p {
+    color: black;
     text-align: right;
     margin-top: 2vmin;
+    font-size: 3vmin;
 }
 
-/* h2 {
-    text-align: center;
-    font-size: 3vmin;
-    margin-top: 2vmin;
-}
 
-h3 {
-    text-align: center;
-    font-size: 3vmin;
-} */
 
 #board {
     padding: 20px;
@@ -34,7 +27,7 @@ h3 {
     grid-template-columns: repeat(4, 20vmin);
     grid-template-rows: repeat(4, 20vmin);
     justify-content: center;
-    gap: 1.5vmin;
+    gap: 2vmin;
 }
 
 button{
@@ -103,10 +96,7 @@ img {
     height: 100%;
     display: grid;
     border-radius: 10%;
-   
 }
 
-/* .matched {
-    background-color: transparent;
-}      */
+
 
