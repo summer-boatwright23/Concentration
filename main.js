@@ -1,7 +1,7 @@
 /*----- constants -----*/
 const board = document.querySelector('#board');
 const cards = document.querySelectorAll('.flip-card')
-const displayLivesRemaining = document.querySelector('#livesRem')
+const displayLivesRemaining = document.getElementById('#livesRem')
 const displayMessage = document.querySelector('#message')
 const playAgainBtn = document.querySelector('button');
 /*----- state variables -----*/
@@ -69,7 +69,7 @@ function initialize(){
     secondCard.classList.add('matched');
     matched++; // increase the matched counter
     if (matched === 8) {
-    displayMessage.textContent = 'Congratulations, you found all the matches!'
+    displayMessage.textContent = 'Congratulations, you found all the matches! Play Again?'
  }
   } 
   // else, remove the 'flipped' class from both cards, meaning they will flip back to their original state
@@ -79,7 +79,7 @@ function initialize(){
     secondCard.classList.remove('flipped');
     firstCard.style.transform = 'rotateY(0deg)';
     secondCard.style.transform = 'rotateY(0deg)';
-     livesRemaining--;
+    livesRemaining--;
     console.log(livesRemaining)
   }
   if (livesRemaining === 0) {
@@ -89,6 +89,8 @@ function initialize(){
   // Empty the chosen array so the player can choose new cards to flip
   chosen = [];
 }
+
+
 
 
 
