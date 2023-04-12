@@ -12,7 +12,6 @@ let lost;
 let turns;
 let livesRemaining = 5;
 let message;
-// let winner = false;
 /*----- event listeners -----*/
 //a click on any of the cards will result in it flipping
 board.addEventListener('click', flipCard);
